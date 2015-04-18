@@ -4,7 +4,7 @@
 
 ## Version:
 
-**3.5.2**
+**3.5.4**
 
 ## Author:
 
@@ -30,7 +30,7 @@ at http://www.phpcaptcha.org/Securimage_Docs/
     
 **Within your HTML form**
     
-    <form metod="post" action="">
+    <form method="post" action="">
     .. form elements
     
     <div>

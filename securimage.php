@@ -41,7 +41,7 @@
  * @link http://www.phpcaptcha.org/Securimage_Docs/ Online Documentation
  * @copyright 2014 Drew Phillips
  * @author Drew Phillips <drew@drew-phillips.com>
- * @version 3.5.3 (Mar 17, 2014)
+ * @version 3.5.4 (Aug 27, 2014)
  * @package Securimage
  *
  */
@@ -52,6 +52,10 @@
  - Implement HTML5 playback of audio using Javascript, DOM, and HTML5 <audio> with Flash fallback
 
  ChangeLog
+
+ 3.5.4
+ - Fix email validation code in example form files
+ - Fix backslashes in getCaptchaHtml for img attribute on Windows systems
 
  3.5.3
  - Add options for audio button to getCaptchaHtml(), fix urlencoding of flash parameters that was breaking button
@@ -1168,6 +1172,7 @@ class Securimage
 
         $rand              = md5(uniqid($_SERVER['REMOTE_PORT'], true));
         $securimage_path   = rtrim($securimage_path, '/\\');
+        $securimage_path   = str_replace('\\', '/', $securimage_path);
 
         $image_attr = '';
         if (!is_array($image_attrs)) $image_attrs = array();
@@ -2044,7 +2049,7 @@ class Securimage
                 $code_entered = strtolower($code_entered);
             }
 
-            if ($code == $code_entered) {
+            if ((string)$code === (string)$code_entered) {
                 $this->correct_code = true;
                 if ($this->no_session != true) {
                     $_SESSION['securimage_code_disp'] [$this->namespace] = '';

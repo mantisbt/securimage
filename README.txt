@@ -4,7 +4,7 @@ NAME:
 
 VERSION:
 
-    3.5.2
+    3.5.4
 
 AUTHOR:
 
@@ -33,7 +33,7 @@ SYNOPSIS:
     
     **Within your HTML form**
     
-    <form metod="post" action="">
+    <form method="post" action="">
     .. form elements
     
     <div>

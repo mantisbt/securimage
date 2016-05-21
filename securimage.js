@@ -193,6 +193,9 @@ SecurimageAudio.prototype.replaceElements = function() {
     parent.removeChild(this.audioElement);
     
     var newAudioEl = document.createElement('audio');
+    newAudioEl.setAttribute('style', 'display: none;');
+    newAudioEl.setAttribute('preload', 'false');
+    newAudioEl.setAttribute('id', this.audioElement.id);
 
     for (var c = 0; c < this.audioElement.children.length; ++c) {
         if (this.audioElement.children[c].tagName.toLowerCase() != 'source') continue;

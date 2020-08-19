@@ -21,6 +21,9 @@
         "ext-pdo_sqlite": "For SQLite3 database support"
     },
     "autoload": {
-        "classmap": ["securimage.php"]
+        "classmap": ["securimage.php"],
+        "psr-4" : {
+            "Securimage\\" : "./"
+        }
     }
 }

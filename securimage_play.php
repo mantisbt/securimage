@@ -54,6 +54,6 @@ $img = new Securimage($options);
 // $img->audio_path = $img->securimage_path . '/audio/es/';
 
 // mp3 or wav format
-$format = (isset($_GET['format']) && strtolower($_GET['format']) == 'mp3') ? 'mp3' : null;
+$format = (isset($_GET['format']) && strtolower($_GET['format']) == 'mp3') ? 'mp3' : '';
 
 $img->outputAudioFile($format);

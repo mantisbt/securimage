@@ -1359,7 +1359,7 @@ class Securimage
      *
      * @param string $format
      */
-    public function outputAudioFile($format = null)
+    public function outputAudioFile($format = '')
     {
         set_error_handler(array(&$this, 'errorHandler'));
 
@@ -1517,7 +1517,7 @@ class Securimage
 
         return '';
 
-        if ($returnExisting && strlen($this->code) > 0) {
+        if ($returnExisting && strlen((string)$this->code) > 0) {
             if ($array) {
                 return array(
                     'code'         => $this->code,
@@ -2185,7 +2185,7 @@ class Securimage
         $code    = $this->getCode(null, true);
 
         if (empty($code) || empty($code->code)) {
-            if ($this->strlen($this->display_value) > 0) {
+            if ($this->strlen((string)$this->display_value) > 0) {
                 $code = new \Securimage\CaptchaObject;
                 $code->code         = $this->display_value;
                 $code->code_display = $this->display_value;

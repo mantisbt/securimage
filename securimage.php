@@ -1603,7 +1603,7 @@ class Securimage
      *
      * @param string $format
      */
-    public function outputAudioFile($format = null)
+    public function outputAudioFile($format = '')
     {
         set_error_handler(array(&$this, 'errorHandler'));
 
@@ -1750,7 +1750,7 @@ class Securimage
     {
         $code = array();
 
-        if ($returnExisting && strlen($this->code) > 0) {
+        if ($returnExisting && strlen((string)$this->code) > 0) {
             if ($array) {
                 return array(
                     'code'         => $this->code,
@@ -2452,7 +2452,7 @@ class Securimage
         $code    = $this->getCode(true, true);
 
         if (empty($code) || empty($code['code'])) {
-            if (strlen($this->display_value) > 0) {
+            if (strlen((string)$this->display_value) > 0) {
                 $code = array('code' => $this->display_value, 'display' => $this->display_value);
             } else {
                 $this->createCode();

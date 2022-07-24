@@ -65,6 +65,6 @@ if (!empty($_GET['namespace'])) $img->setNamespace($_GET['namespace']);
 
 
 // mp3 or wav format
-$format = (isset($_GET['format']) && strtolower($_GET['format']) == 'mp3') ? 'mp3' : null;
+$format = (isset($_GET['format']) && strtolower($_GET['format']) == 'mp3') ? 'mp3' : '';
 
 $img->outputAudioFile($format);

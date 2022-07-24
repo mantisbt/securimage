@@ -3455,7 +3455,7 @@ class Securimage
     protected function wavToMp3($data)
     {
         if (!file_exists(self::$lame_binary_path) || !is_executable(self::$lame_binary_path)) {
-            throw new Exception('Lame binary "' . $this->lame_binary_path . '" does not exist or is not executable');
+            throw new Exception('Lame binary "' . self::$lame_binary_path . '" does not exist or is not executable');
         }
 
         // size of wav data input

@@ -4,7 +4,7 @@
  * Project:     Securimage: A PHP class for creating and managing form CAPTCHA images<br />
  * File:        securimage_show_example2.php<br />
  *
- * Copyright (c) 2012, Drew Phillips
+ * Copyright (c) 2018, Drew Phillips
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -35,7 +35,7 @@
  * http://www.hotscripts.com/rate/49400.html  Thanks.
  *
  * @link https://github.com/dapphp/securimage Securimage PHP CAPTCHA
- * @copyright 2012 Drew Phillips
+ * @copyright 2018 Drew Phillips
  * @author Drew Phillips <drew@drew-phillips.com>
 * @package Securimage
  *

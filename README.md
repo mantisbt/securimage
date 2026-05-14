@@ -29,7 +29,7 @@ To use or modify the code, start with the 4.0 (nextgen) branch. It has many feat
 * PDO (if using Sqlite, MySQL, or PostgreSQL)
 
 ## Synopsis
-    
+
 See the [example form](example_form.php) to get started. PHP sessions are not required if database storage is used instead.
 
 ## Description
@@ -45,7 +45,7 @@ session storage.
 Variables within the class are used to control the style and display of the
 image.  The class uses TTF fonts and effects for strengthening the security of
 the image.
-    
+
 It also creates audible codes which are played for visually impared users.
 
 ## UPGRADE NOTICE

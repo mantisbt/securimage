@@ -34,7 +34,7 @@
  * If you found this script useful, please take a quick moment to rate it.<br />
  * http://www.hotscripts.com/rate/49400.html  Thanks.
  *
- * @link https://github.com/dapphp/securimage Securimage PHP CAPTCHA
+ * @link https://github.com/dapphp/securimage Github page
  * @copyright 2018 Drew Phillips
  * @author Drew Phillips <drew@drew-phillips.com>
  * @version 4.0.2 (May 2020)

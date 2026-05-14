@@ -33,7 +33,7 @@
  * Any modifications to the library should be indicated clearly in the source code
  * to inform users that the changes are not a part of the original software.
  *
- * @link https://github.com/dapphp/securimage Securimage Homepage
+ * @link https://github.com/dapphp/securimage GitHub page
  * @copyright 2018 Drew Phillips
  * @author Drew Phillips <drew@drew-phillips.com>
  * @version 4.0.2 (March 2018)
@@ -672,6 +672,11 @@ class Securimage
      * @var int
      */
     protected $gdlinecolor;
+
+    /**
+     * The GD color for image background noise
+     */
+    protected $gdnoisecolor;
 
     /**
      * The GD color for the signature text color

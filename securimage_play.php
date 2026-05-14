@@ -50,7 +50,7 @@ $img = new Securimage($options);
 //$img->degrade_audio   = false;
 //Securimage::$lame_binary_path = '/usr/bin/lame'; // for mp3 audio support
 
-// To use an alternate language, uncomment the following and point at suitable audio files
+// To use an alternate language, uncomment the following and point at a suitable set of audio files
 // $img->audio_path = $img->securimage_path . '/audio/es/';
 
 // mp3 or wav format

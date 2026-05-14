@@ -2166,7 +2166,9 @@ class Securimage
                 .'a PHP error was sent to the browser.</strong>';
         }
 
-        imagedestroy($this->im);
+        if(PHP_VERSION_ID < 80000) {
+            imagedestroy($this->im);
+        }
         restore_error_handler();
 
         if (!$this->no_exit) exit;

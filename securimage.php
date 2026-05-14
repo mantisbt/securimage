@@ -674,7 +674,9 @@ class Securimage
     protected $gdlinecolor;
 
     /**
-     * The GD color for image background noise
+     * The GD color for the noise color
+     *
+     * @var int
      */
     protected $gdnoisecolor;
 
@@ -1030,8 +1032,8 @@ class Securimage
             $code = '';
         }
 
-        $this->code_entered = $code;
-        $this->correct_code = false;
+        $code_entered = $code;
+        $correct_code = false;
         $this->code         = null;
 
         if (empty($captchaId)) {
@@ -1059,7 +1061,7 @@ class Securimage
                 }
             }
 
-            $this->validate($captchaId);
+            $correct_code = $this->validate($captchaId, $code_entered);
         } else {
             trigger_error(
                 'No captcha ID supplied to Securimage::check(). ' .
@@ -1068,13 +1070,13 @@ class Securimage
             );
         }
 
-        if ($this->correct_code === false && $alwaysDelete) {
+        if ($correct_code === false && $alwaysDelete) {
             // clear code from storage after use
             // if correct_code === true, it has already been deleted
             $this->deleteData($captchaId);
         }
 
-        return $this->correct_code;
+        return $correct_code;
     }
 
     /**
@@ -1985,15 +1987,15 @@ class Securimage
         $amp      = array(); // amplitude
         $x        = ($this->image_width / 4); // lowest x coordinate of a pole
         $maxX     = $this->image_width - $x;  // maximum x coordinate of a pole
-        $dx       = mt_rand($x / 10, $x);     // horizontal distance between poles
+        $dx       = mt_rand(intval($x / 10), intval($x));     // horizontal distance between poles
         $y        = mt_rand(20, $this->image_height - 20);  // random y coord
         $dy       = mt_rand(20, round($this->image_height * 0.7, 0)); // y distance
         $minY     = 20;                                     // minimum y coordinate
         $maxY     = $this->image_height - 20;               // maximum y cooddinate
 
         // make array of poles AKA attractor points
-        for ($i = 0; $i < $numpoles; ++ $i) {
-            $px[$i]  = ($x + ($dx * $i)) % $maxX;
+		for ($i = 0; $i < $numpoles; ++ $i) {
+            $px[$i]  = (intval($x) + ($dx * $i)) % intval($maxX);
             $py[$i]  = ($y + ($dy * $i)) % $maxY + $minY;
             $rad[$i] = mt_rand($this->image_height * 0.4, $this->image_height * 0.8);
             $tmp     = ((- $this->frand()) * 0.15) - .15;
@@ -2049,7 +2051,7 @@ class Securimage
 
             $theta = ($this->frand() - 0.5) * M_PI * 0.33;
             $w = $this->image_width;
-            $len = mt_rand($w * 0.4, $w * 0.7);
+            $len = mt_rand(intval($w * 0.4), intval($w * 0.7));
             $lwid = mt_rand(0, 2);
 
             $k = $this->frand() * 0.6 + 0.2;
@@ -2338,13 +2340,14 @@ class Securimage
      * Checks the entered code against the value stored in the session and/or database (if configured).  Handles case sensitivity.
      * Also removes the code from session/database if the code was entered correctly to prevent re-use attack.
      *
-     * This function does not return a value.
+     * This function return TRUE if the code is correct. False otherwise.
      *
      * @see Securimage::$correct_code 'correct_code' property
      */
-    protected function validate($captchaId)
+    protected function validate($captchaId, $code_entered)
     {
-        $code = null;
+		$code = null;
+		$retval = false;
 
         if (!$this->code) {
             $code = $this->getCode();
@@ -2375,10 +2378,9 @@ class Securimage
             $this->case_sensitive = true;
         }
 
-        $code_entered = trim( (($this->case_sensitive) ? $this->code_entered
-                                                       : strtolower($this->code_entered))
+        $code_entered = trim( (($this->case_sensitive) ? $code_entered
+                                                       : strtolower($code_entered))
                         );
-        $this->correct_code = false;
 
         if ($code != '') {
             if (strpos($code, ' ') !== false) {
@@ -2388,11 +2390,12 @@ class Securimage
             }
 
             if ((string)$code === (string)$code_entered) {
-                $this->correct_code = true;
+                $retval = true;
 
                 $this->deleteData($captchaId);
             }
-        }
+		}
+		return $retval;
     }
 
     /**

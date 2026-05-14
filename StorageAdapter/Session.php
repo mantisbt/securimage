@@ -20,7 +20,7 @@ class Session implements AdapterInterface
     public function store($captchaId, $captchaInfo)
     {
         if ((function_exists('session_status') && PHP_SESSION_ACTIVE == session_status()) || session_id() != '') {
-            $_SESSION['securimage_data'][$captchaId] = $captchaInfo;
+			$_SESSION['securimage_data'][$captchaId] = serialize($captchaInfo);
 
             return true;
         }
@@ -43,7 +43,7 @@ class Session implements AdapterInterface
     public function get($captchaId, $what = null)
     {
         if (isset($_SESSION['securimage_data'][$captchaId])) {
-            return $_SESSION['securimage_data'][$captchaId];
+            return unserialize($_SESSION['securimage_data'][$captchaId]);
         }
 
         return null;

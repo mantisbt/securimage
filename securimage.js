@@ -99,6 +99,7 @@ SecurimageAudio.prototype.init = function() {
                 this.playButtonImage = el;
             } else if (el.className.indexOf('loading_image') >= 0) {
                 this.loadingImage = el;
+                this.loadingImage.style.display = 'none';
             }
         }
     }
@@ -179,7 +180,7 @@ SecurimageAudio.prototype.replaceElements = function() {
     parent.removeChild(this.audioElement);
     
     var newAudioEl = document.createElement('audio');
-    newAudioEl.setAttribute('style', 'display: none;');
+    newAudioEl.style.display = 'none';
     newAudioEl.setAttribute('preload', 'false');
     newAudioEl.setAttribute('id', this.audioElement.id);
 

@@ -42,6 +42,7 @@ class Session implements AdapterInterface
 
     public function get($captchaId, $what = null)
     {
+        $captchaId = $captchaId ?? '';
         if (isset($_SESSION['securimage_data'][$captchaId])) {
             $data = $_SESSION['securimage_data'][$captchaId];
 

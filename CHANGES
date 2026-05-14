@@ -1,5 +1,17 @@
 CHANGES
 
+4.0.4 - Unofficial release by MantisBT team
+- Fix JavaScript CSP compatibility by @raspopov (#74)
+- Downgrade minimum PHP compatibility version in composer.json
+
+4.0.3 - Unofficial release by Christian Albert (@ca-dsgn) and Alexander Lochmann (@flipreverse)
+- Add possibility to specify port on Mysqli and PDO (#102)
+- PHP 8.0 fix division by zero (#108)
+- Use Redis::expire() instead of setTimeout (#110)
+- Fix deprecation notices under PHP 8.1 (#114)
+- PHP 8.2 compatibility fixes by Alexander Lochmann (#118)
+- PHP 8.4 Session compatibility fix by Christian Albert
+
 4.0.2
 - Merge changes from master branch release 3.6.8
 

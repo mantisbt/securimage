@@ -43,7 +43,15 @@ class Session implements AdapterInterface
     public function get($captchaId, $what = null)
     {
         if (isset($_SESSION['securimage_data'][$captchaId])) {
-            return unserialize($_SESSION['securimage_data'][$captchaId]);
+            $data = $_SESSION['securimage_data'][$captchaId];
+
+            if (is_string($data)) {
+                return unserialize($data);
+            } elseif ($data instanceof \Securimage\CaptchaObject) {
+                return $data;
+            } else {
+                trigger_error('Unexpected data type in session for captchaId: ' . gettype($data), E_USER_WARNING);
+            }
         }
 
         return null;

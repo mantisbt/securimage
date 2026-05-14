@@ -1,9 +1,9 @@
 {
-    "name": "dapphp/securimage",
+    "name": "ca-dsgn/securimage",
     "type": "library",
     "description": "PHP CAPTCHA Library",
     "keywords": ["captcha","security","forms","anti-spam"],
-    "homepage": "https://github.com/dapphp/securimage",
+    "homepage": "https://github.com/ca-dsgn/securimage",
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": ">=8.4",
         "ext-gd": "*"
     },
     "suggest": {
